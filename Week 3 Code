@@ -1,0 +1,83 @@
+from sklearn import datasets
+
+iris = datasets.load_iris()
+
+from sklearn import datasets
+import pandas as pd
+
+# Load iris dataset
+iris = datasets.load_iris()
+
+# Create a DataFrame with the data
+iris_df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+
+# Display the first few rows, need to see what I am even working with?
+print(iris_df.head())
+
+import matplotlib.pyplot as plt
+
+# Create histogram for each feature
+iris_df.hist(bins=10, figsize=(15,10))
+plt.tight_layout()  # Adjusts subplots to fit in the figure area.
+plt.show()
+
+# Create boxplot for each 
+iris_df.boxplot(figsize=(10, 7))
+plt.title('Boxplot of Iris Features')
+plt.show()
+
+import seaborn as sns
+
+# Load the iris dataset from seaborn
+iris = sns.load_dataset('iris')
+
+# Generate a scatterplot matrix
+sns.pairplot(iris, hue='species')
+plt.show()
+
+#Take 2!  lets try this again after installing seaborn DERP
+import seaborn as sns
+
+# Load the iris dataset from seaborn
+iris = sns.load_dataset('iris')
+
+# Generate a scatterplot matrix
+sns.pairplot(iris, hue='species')
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+iris = sns.load_dataset('iris')
+
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(111, projection='3d')
+
+ax.scatter(iris['sepal_length'], iris['sepal_width'], iris['petal_length'], c=iris['species'].astype('category').cat.codes, cmap='viridis')
+
+ax.set_xlabel('Sepal Length')
+ax.set_ylabel('Sepal Width')
+ax.set_zlabel('Petal Length')
+ax.set_title('3D Scatter Plot of Iris Dataset')
+
+plt.show()
+
+# QUESTION 5
+
+#1.  Comparing Petal Length to Sepal Length: 
+#The petal length histogram typically has a bimodal structure with two distinct peaks, 
+#suggesting the presence of two separate groups or species in the data. 
+#The histogram of sepal length, in comparison, is more unimodal 
+#and has a single, outsized peak.
+
+#2  Similar to petal length, the histogram of petal width likewise displays a bimodal structure, 
+#indicating the existence of two separate groups or species. The histogram of sepal breadth, 
+#on the other hand, has a single peak and is largely unimodal.
+
+
+#QUESTION 6
+#The petal length appears to explain the most of the data, 
+#at least according to the boxplots alone. The significant difference in medians seen when compared to the other 
+#characteristics and the IQR boxes' low overlap with other features lead to this conclusion.
+
